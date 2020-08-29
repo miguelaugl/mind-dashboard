@@ -20,7 +20,6 @@ const userSeed = [
     cpf: '787.321.424-40',
     password_hash:
       '$2a$08$JSsxK5x7WGZB7tgwroapPupjD0kv3rSvbpJKn.kmtpQR3rJcChkiO',
-    active: false,
   },
   {
     fullName: 'Sérgio Malandro',

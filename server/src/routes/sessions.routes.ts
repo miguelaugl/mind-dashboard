@@ -15,6 +15,10 @@ sessionsRouter.post('/', async (request, response) => {
       password,
     });
 
+    if (!user.access_level) {
+      throw new Error('Account is desactived');
+    }
+
     return response.json({ user, token });
   } catch (error) {
     return response.status(400).json({ error: error.messsage });

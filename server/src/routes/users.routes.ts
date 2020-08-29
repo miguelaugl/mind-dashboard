@@ -51,9 +51,7 @@ usersRouter.get('/', async (request, response) => {
 
   const users = await usersRepository.find();
 
-  const filteredUsers = users.filter(item => item.id !== request.user.id);
-
-  return response.status(200).json(filteredUsers);
+  return response.status(200).json(users);
 });
 
 usersRouter.get('/:id', async (request, response) => {

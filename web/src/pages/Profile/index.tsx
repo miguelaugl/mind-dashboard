@@ -39,11 +39,14 @@ interface ProfileProps {
 }
 
 const schema = yup.object().shape({
-  fullName: yup.string().required('Campo obrigatório'),
+  fullName: yup.string()
+    .required('Campo obrigatório')
+    .max(25, 'Máximo de 25 caracteres'),
   email: yup
     .string()
     .email('Formato de email inválido')
-    .required('Campo obrigatório'),
+    .required('Campo obrigatório')
+    .max(25, 'Máximo de 25 caracteres'),
   cpf: yup
     .string()
     .required('Campo obrigatório')

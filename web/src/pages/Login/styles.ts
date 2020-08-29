@@ -8,7 +8,7 @@ export const Wrapper = styled.section`
   background-size: 80rem;
   background-repeat: no-repeat;
   background-position-y: center;
-  background-position-x: 30rem;
+  background-position-x: 5rem;
   width: 100vw;
   height: 100vh;
 

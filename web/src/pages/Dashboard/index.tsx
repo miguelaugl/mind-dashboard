@@ -14,8 +14,8 @@ interface UserProps {
   fullName: string;
   email: string;
   cpf: string;
+  access_level: number;
   avatar: string;
-  active: boolean;
 }
 
 const Dashboard: React.FC = () => {
@@ -37,10 +37,10 @@ const Dashboard: React.FC = () => {
     })();
   }, []);
 
-  async function toggleUser(userId: string, current: boolean) {
+  async function toggleUser(userId: string, accessLevel: number) {
     try {
       const updatedData = {
-        active: !current,
+        access_level: accessLevel ? 0 : 1,
       };
 
       const { data } = await api.patch('/users/' + userId, updatedData);
@@ -73,7 +73,7 @@ const Dashboard: React.FC = () => {
       />
       <Container>
         <ul>
-          {users.map(user => <User key={user.id} {...user} onToggleClick={() => toggleUser(user.id, user.active)} />)}
+          {users.map(user => <User key={user.id} {...user} onToggleClick={() => toggleUser(user.id, user.access_level)} />)}
         </ul>
       </Container>
     </Wrapper>

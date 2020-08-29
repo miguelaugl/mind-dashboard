@@ -16,7 +16,7 @@ interface UserProps {
   email: string;
   cpf: string;
   avatar: string;
-  active: boolean;
+  access_level: number;
   onToggleClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
@@ -25,14 +25,14 @@ const User: React.FC<UserProps> = ({
   fullName,
   cpf,
   email,
-  active,
+  access_level,
   avatar,
   onToggleClick,
 }) => {
   return (
-    <Container style={{ opacity: active ? '1' : '.6' }}>
+    <Container style={{ opacity: access_level !== 0 ? '1' : '.6' }}>
       <Description>
-        <img src={avatar || noPicture} alt="Naruto" />
+        <img src={avatar || noPicture} alt="Imagem de perfil" />
 
         <div>
           <strong>{fullName}</strong>
@@ -51,11 +51,11 @@ const User: React.FC<UserProps> = ({
         </button>
 
         <button
-          className={active ? "power active" : "power"}
+          className={access_level !== 0 ? "power access_level" : "power"}
           onClick={onToggleClick}
         >
           <MdPowerSettingsNew />
-          {active ? 'Desativar' : 'Ativar' }
+          {access_level !== 0 ? 'Desativar' : 'Ativar' }
         </button>
       </Actions>
     </Container>

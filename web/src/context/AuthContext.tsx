@@ -56,7 +56,7 @@ const AuthProvider: React.FC = ({ children }) => {
     const { user, token } = data;
 
     if (user.access_level === 0) {
-      alert('Sua conta está desabilitada.');
+      alert('Sua conta está desativada.');
       return;
     }
 

@@ -28,9 +28,6 @@ class User {
   @Column({ default: 1 })
   access_level: number;
 
-  @Column({ default: true })
-  active: boolean;
-
   @CreateDateColumn()
   created_at: Date;
 
