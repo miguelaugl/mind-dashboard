@@ -46,7 +46,7 @@ const schema = yup.object().shape({
     .string()
     .email('Formato de email inválido')
     .required('Campo obrigatório')
-    .max(25, 'Máximo de 25 caracteres'),
+    .max(40, 'Máximo de 40 caracteres'),
   cpf: yup
     .string()
     .required('Campo obrigatório')

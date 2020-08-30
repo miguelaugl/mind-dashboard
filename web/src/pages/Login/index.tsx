@@ -40,7 +40,7 @@ const Login: React.FC = () => {
       await handleLogin!(formValues);
     } catch(err) {
       console.warn(err);
-      alert('Combinação de login incorreta');
+      alert('Combinação de login incorreta ou sua conta está desativada.');
     }
 
     setLogging(prevState => !prevState);

@@ -30,7 +30,7 @@ const User: React.FC<UserProps> = ({
   onToggleClick,
 }) => {
   return (
-    <Container style={{ opacity: access_level !== 0 ? '1' : '.6' }}>
+    <Container style={{ opacity: access_level !== 0 ? 1 : .6 }}>
       <Description>
         <img src={avatar || noPicture} alt="Imagem de perfil" />
 
@@ -51,7 +51,7 @@ const User: React.FC<UserProps> = ({
         </button>
 
         <button
-          className={access_level !== 0 ? "power access_level" : "power"}
+          className={access_level !== 0 ? "power active" : "power"}
           onClick={onToggleClick}
         >
           <MdPowerSettingsNew />
