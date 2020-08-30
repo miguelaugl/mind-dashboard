@@ -19,7 +19,7 @@ export const Container = styled.div`
     background: #2F2E41;
 
     &:hover {
-      transform: translateX(-5px);
+      transform: translateX(-.5rem);
     }
   }
 
