@@ -31,7 +31,7 @@ export const Container = styled.main`
   @media(min-width: 768px) {
     ul {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px,1fr));
+      grid-template-columns: repeat(auto-fill, minmax(26rem,1fr));
       grid-gap: 1.5rem;
     }
   }

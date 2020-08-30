@@ -1,13 +1,12 @@
 import React from 'react';
+import { FaSpinner } from 'react-icons/fa';
 
 import { Container } from './styles';
-
-import loadingImg from '../../assets/images/loading.svg';
 
 const Loading: React.FC = () => {
   return (
     <Container>
-      <img src={loadingImg} alt="Loading" />
+      <FaSpinner className="icon-spin" />
     </Container>
   );
 }

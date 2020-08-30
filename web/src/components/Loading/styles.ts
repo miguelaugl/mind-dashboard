@@ -12,8 +12,8 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
 
-  img {
-    width: 400px;
-    animation: loading 1s infinite linear;
+  svg {
+    font-size: 12.5rem;
+    color: #6C63FF;
   }
 `;

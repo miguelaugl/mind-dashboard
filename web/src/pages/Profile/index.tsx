@@ -1,4 +1,10 @@
-import React, { useState, useEffect, useRef, ChangeEvent } from 'react';
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useContext,
+  ChangeEvent,
+} from 'react';
 import { MdEmail } from 'react-icons/md';
 import { FaIdCard, FaSpinner } from 'react-icons/fa';
 import { useForm } from 'react-hook-form';
@@ -9,6 +15,7 @@ import { Header, Loading, Input } from '../../components';
 import api from '../../services/api';
 import noPicture from '../../assets/images/no-profile-image.jpg';
 import history from '../../history';
+import { Context } from '../../context/AuthContext';
 
 import {
   Wrapper,
@@ -28,6 +35,7 @@ interface User {
   email: string;
   cpf: string;
   avatar: string;
+  access_level: number;
 }
 
 interface ProfileProps {
@@ -54,10 +62,13 @@ const schema = yup.object().shape({
 });
 
 const Profile: React.FC<ProfileProps> = ({ match }) => {
+  const { user: currentUser, setUser: setCurrentUser } = useContext(Context);
+
   const [user, setUser] = useState<User>();
-  const [currentUserId, setCurrentUserId] = useState<string>();
   const [loading, setLoading] = useState<boolean>(true);
   const [sending, setSending] = useState<boolean>(false);
+
+  const isAdmin = currentUser.access_level === 999;
 
   const imageRef = useRef<HTMLImageElement>(null);
 
@@ -76,11 +87,8 @@ const Profile: React.FC<ProfileProps> = ({ match }) => {
 
       const { data } = await api.get(`/users/${id}`);
 
-      const userId = JSON.parse(localStorage.getItem('user_id')!);
-
       setUser(data);
       setLoading(false);
-      setCurrentUserId(userId);
     })();
   }, [match]);
 
@@ -103,10 +111,14 @@ const Profile: React.FC<ProfileProps> = ({ match }) => {
         formData.append('avatar', avatar[0]);
       }
 
-      await api.patch('/users/' + user?.id, formData);
+      const { data } = await api.patch('/users/' + user?.id, formData);
 
-      if (currentUserId !== user?.id) {
+      if (currentUser.id !== user?.id) {
         history.push('/dashboard');
+      } else {
+        console.log(currentUser);
+
+        setCurrentUser(data);
       }
     } catch(err) {
       console.warn(err);
@@ -135,8 +147,10 @@ const Profile: React.FC<ProfileProps> = ({ match }) => {
       <Header
         title="Perfil"
         description="Sinta-se livre para alterar os dados"
-        logout={currentUserId === user?.id}
+        logout={!isAdmin}
+        showCredentials={!isAdmin}
       />
+
       <Container>
         <div>
           <form>

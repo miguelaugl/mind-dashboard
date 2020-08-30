@@ -6,7 +6,7 @@ export const Container = styled.li`
   padding: 2.5rem;
   border-radius: 1rem;
   color: #1e1a15;
-  box-shadow: 0 0 0 1px rgba(0,0,0,.15), 0 2px 3px rgba(0,0,0,.2);
+  box-shadow: 0 0 0 .1rem rgba(0,0,0,.15), 0 .2rem .3rem rgba(0,0,0,.2);
   margin-bottom: 1.5rem;
 
   display: flex;

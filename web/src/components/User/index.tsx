@@ -44,7 +44,7 @@ const User: React.FC<UserProps> = ({
       <Actions>
         <button
           className="edit"
-          onClick={() => history.push(`/profile/${id}`,)}
+          onClick={() => history.push(`/profile/${id}`)}
         >
           <MdModeEdit />
           Editar

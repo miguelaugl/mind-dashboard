@@ -24,7 +24,7 @@ export const Container = styled.main`
     border-radius: 1rem;
     padding: 4rem 2.5rem;
     margin-bottom: 2rem;
-    box-shadow: 0 0 0 1px rgba(0,0,0,.15), 0 2px 3px rgba(0,0,0,.2);
+    box-shadow: 0 0 0 .1rem rgba(0,0,0,.15), 0 .2rem .3rem rgba(0,0,0,.2);
 
     form {
       width: 100%;

@@ -43,7 +43,7 @@ const Input: React.FC<InputProps> = ({
             color="#1e1a15"
             onClick={onIconClick}
           />}
-     </span>
+      </span>
     </InputContainer>
   );
 }

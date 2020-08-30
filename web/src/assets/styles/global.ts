@@ -54,16 +54,6 @@ const GlobalStyles = createGlobalStyle`
       transform: rotate(359deg);
     }
   }
-
-  @keyframes loading {
-    0% {
-      transform: scale(0.9099999999999999);
-    } 51% {
-      transform: scale(1.02994);
-    } 100% {
-      transform: scale(0.9099999999999999);
-    }
-  }
 `;
 
 export default GlobalStyles;

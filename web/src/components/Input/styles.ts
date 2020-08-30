@@ -25,6 +25,11 @@ export const InputContainer = styled.div`
       }
     }
 
+    svg {
+      width: 2rem;
+      height: 2rem;
+    }
+
     p {
       display: none;
       position: absolute;
@@ -48,7 +53,7 @@ export const InputContainer = styled.div`
   }
 
   input {
-    border: 1px solid transparent;
+    border: .1rem solid transparent;
     border-radius: .5rem;
     height: 4rem;
     padding: 0 3.5rem 0 1.5rem;
@@ -56,7 +61,8 @@ export const InputContainer = styled.div`
   }
 
   @media(max-width: 768px) {
-    label {
+    label,
+    input {
       font-size: 1.4rem;
     }
   }

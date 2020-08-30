@@ -71,6 +71,7 @@ const Dashboard: React.FC = () => {
         description="Estes são os usuários cadastrados na plataforma atualmente"
         logout={true}
       />
+
       <Container>
         <ul>
           {users.map(user => <User key={user.id} {...user} onToggleClick={() => toggleUser(user.id, user.access_level)} />)}

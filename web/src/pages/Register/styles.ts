@@ -26,6 +26,7 @@ export const Container = styled.div`
   justify-content: center;
 
   img {
+    width: 28rem;
     margin-bottom: 2rem;
   }
 

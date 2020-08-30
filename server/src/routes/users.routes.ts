@@ -51,7 +51,9 @@ usersRouter.get('/', async (request, response) => {
 
   const users = await usersRepository.find();
 
-  return response.status(200).json(users);
+  const filteredUsers = users.filter(item => item.id !== user.id);
+
+  return response.status(200).json(filteredUsers);
 });
 
 usersRouter.get('/:id', async (request, response) => {
@@ -108,6 +110,8 @@ usersRouter.patch(
     await usersRepository.update(userToBeUpdatedId, updatedData);
 
     const updatedUser = await usersRepository.findOne(userToBeUpdatedId);
+
+    delete updatedUser?.password_hash;
 
     return response.status(200).send(updatedUser);
   },
