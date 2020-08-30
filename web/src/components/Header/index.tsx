@@ -4,6 +4,7 @@ import { FaArrowLeft } from 'react-icons/fa';
 import { Context } from '../../context/AuthContext';
 import history from '../../history';
 import noPicture from '../../assets/images/no-profile-image.jpg';
+import api from '../../services/api';
 
 import {
   Wrapper,
@@ -48,7 +49,10 @@ const Header: React.FC<HeaderProps> = ({
           >
             <strong>{user.fullName}</strong>
 
-            <img src={user.avatar || noPicture} alt="Imagem de perfil" />
+            <img
+              src={user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : noPicture}
+              alt="Imagem de perfil"
+            />
           </div>
         )}
       </Container>

@@ -116,10 +116,10 @@ const Profile: React.FC<ProfileProps> = ({ match }) => {
       if (currentUser.id !== user?.id) {
         history.push('/dashboard');
       } else {
-        console.log(currentUser);
-
         setCurrentUser(data);
       }
+
+      alert('Dados atualizados com sucesso!');
     } catch(err) {
       console.warn(err);
       alert('Um erro ocorreu, tente novamente.');
@@ -156,7 +156,9 @@ const Profile: React.FC<ProfileProps> = ({ match }) => {
           <form>
             <label htmlFor="file">
               <img
-                src={user?.avatar || noPicture}
+                src={user?.avatar ?
+                  `${api.defaults.baseURL}/files/${user?.avatar}` : noPicture
+                }
                 alt="Imagem de perfil"
                 ref={imageRef}
               />

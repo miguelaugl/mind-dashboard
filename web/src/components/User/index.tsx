@@ -3,6 +3,7 @@ import { MdModeEdit, MdPowerSettingsNew } from 'react-icons/md';
 
 import noPicture from '../../assets/images/no-profile-image.jpg';
 import history from '../../history';
+import api from '../../services/api';
 
 import {
   Container,
@@ -32,7 +33,7 @@ const User: React.FC<UserProps> = ({
   return (
     <Container style={{ opacity: access_level !== 0 ? 1 : .6 }}>
       <Description>
-        <img src={avatar || noPicture} alt="Imagem de perfil" />
+        <img src={avatar ? `${api.defaults.baseURL}/files/${avatar}` : noPicture} alt="Imagem de perfil" />
 
         <div>
           <strong>{fullName}</strong>
