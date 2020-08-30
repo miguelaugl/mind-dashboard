@@ -1,10 +1,12 @@
 import { Router } from 'express';
 import { hash } from 'bcryptjs';
 import { getCustomRepository } from 'typeorm';
+import fs from 'fs';
+import path from 'path';
 
 import UsersRepository from '../repositories/UsersRepository';
 import ensureAuthenticated from '../middlewares/ensureAuthenticated';
-import uploads from '../config/multer';
+import { uploads, multerConfig } from '../config/multer';
 
 const usersRouter = Router();
 
@@ -92,13 +94,27 @@ usersRouter.patch(
       }
     }
 
+    const updatedUser = await usersRepository.findOne(userToBeUpdatedId);
+
     let updatedData = {};
 
     if (request.file) {
+      if (updatedUser?.avatar) {
+        const userAvatarFilePath = path.join(
+          multerConfig.directory,
+          updatedUser.avatar,
+        );
+        const userAvatarFileExists = await fs.promises.stat(userAvatarFilePath);
+
+        if (userAvatarFileExists) {
+          await fs.promises.unlink(userAvatarFilePath);
+        }
+      }
+
       const { filename } = request.file;
 
       updatedData = {
-        avatar: `http://localhost:3333/files/${filename}`,
+        avatar: filename,
       };
     }
 
@@ -108,8 +124,6 @@ usersRouter.patch(
     };
 
     await usersRepository.update(userToBeUpdatedId, updatedData);
-
-    const updatedUser = await usersRepository.findOne(userToBeUpdatedId);
 
     delete updatedUser?.password_hash;
 

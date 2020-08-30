@@ -31,4 +31,4 @@ const multerConfig = {
 
 const uploads = multer(multerConfig);
 
-export default uploads;
+export { uploads, multerConfig };
